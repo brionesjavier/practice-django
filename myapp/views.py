@@ -18,12 +18,16 @@ def hello(request, username):
 
 
 def about(request):
-    return HttpResponse("About")
+     username= "a mi sitio";
+     return render(request,'hello.html',{'username':username})
 
 def project(request):
-    #projects = Project.objects.all()
-    projects = list(Project.objects.values())
-    return JsonResponse(projects,safe=False);
+    
+    #projects = list(Project.objects.values())
+    projects = Project.objects.all()
+
+    #return JsonResponse(projects,safe=False);
+    return render(request, 'Project.html',{'projects':projects})
 
 def task(request,id):
     #task= Task.objects.get(id=id)
